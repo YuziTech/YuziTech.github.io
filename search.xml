@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>文章测试</title>
-    <url>/2021/08/28/%E6%96%87%E7%AB%A0%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h1><h2 id="这是一段文字"><a href="#这是一段文字" class="headerlink" title="这是一段文字"></a>这是一段文字</h2>]]></content>
-      <categories>
-        <category>杂项</category>
-      </categories>
-      <tags>
-        <tag>杂</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2021/08/27/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -27,6 +16,398 @@
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+    <content><![CDATA[<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><h2 id="3-1数据链路层概述"><a href="#3-1数据链路层概述" class="headerlink" title="3.1数据链路层概述"></a>3.1数据链路层概述</h2><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071733311.png" alt="image-20211207165933281"></p>
+<p>通常情况下我们可以这样看网络体系结构</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071742728.png" alt="image-20211207174249613"></p>
+<p><strong>链路（Link）</strong>就是从一个结点到相邻结点的一段物理线路，而中间没有任何其他的交换结点。</p>
+<p><strong>数据链路（Data Link）</strong>是指把视线通信协议的硬件和软件加到链路上，就构成了数据链路。</p>
+<p>数据链路层以<strong>帧</strong>为单位传输和处理数据。</p>
+<h3 id="3-1-1数据链路层的三个重要问题"><a href="#3-1-1数据链路层的三个重要问题" class="headerlink" title="3.1.1数据链路层的三个重要问题"></a>3.1.1数据链路层的三个重要问题</h3><h4 id="基于点对点信道的数据链路层举例"><a href="#基于点对点信道的数据链路层举例" class="headerlink" title="基于点对点信道的数据链路层举例"></a>基于点对点信道的数据链路层举例</h4><ol>
+<li><p><strong>封装成帧</strong>（封装帧头和帧尾）</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071749764.png" alt="image-20211207174929436"></p>
+</li>
+<li><p><strong>差错检测</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071751666.png" alt="image-20211207175148480"></p>
+<p>接收方主机收到帧后通过检错码和检错算法，就可以判断出帧在传输过程中是否出现了误码</p>
+</li>
+<li><p><strong>可靠传输</strong></p>
+</li>
+</ol>
+<p>​        如果是不可靠传输，接收到有误码的帧就会将其丢弃，如果是可靠传输，接收方主机还可以重新收到被丢弃的这个帧的正确副本。</p>
+<p>​    <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071756361.png" alt="image-20211207175638115"></p>
+<h4 id="使用广播信道的数据链路层（共享式局域网）还有一下问题"><a href="#使用广播信道的数据链路层（共享式局域网）还有一下问题" class="headerlink" title="使用广播信道的数据链路层（共享式局域网）还有一下问题"></a>使用广播信道的数据链路层（共享式局域网）还有一下问题</h4><ol>
+<li><p><strong>编址问题</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071800928.png" alt="image-20211207180032692"></p>
+<p>A要给C发送信息，C如何确定自己是信息接收方，而BDE又如何知道这个信息不需要接收，需要在帧中插入目标地址，例如上图的目的地址和源地址。</p>
+</li>
+<li><p><strong>同时传输碰撞问题</strong></p>
+</li>
+</ol>
+<p>​    <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071805245.png" alt="image-20211207180516989"></p>
+<p>目前在有线局域网领域<strong>交换式局域网（网桥和交换机）</strong>已经完全取代了共享式局域网</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071806827.png" alt="image-20211207180633733"></p>
+<p><strong>无线局域网</strong>任然还是共享信道技术</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071809879.png" alt="image-20211207180931268"></p>
+<h4 id="数据链路层的互连设备"><a href="#数据链路层的互连设备" class="headerlink" title="数据链路层的互连设备"></a>数据链路层的互连设备</h4><ol>
+<li>网桥和交换机的工作原理</li>
+<li>集线器（物理互连设备）与交换机的区别</li>
+</ol>
+<h2 id="3-2封装成帧"><a href="#3-2封装成帧" class="headerlink" title="3.2封装成帧"></a>3.2封装成帧</h2><h4 id="3-2-1什么是封装成帧"><a href="#3-2-1什么是封装成帧" class="headerlink" title="3.2.1什么是封装成帧"></a>3.2.1什么是封装成帧</h4><p>封装成帧是指数据链路层给上层交付的协议数据单元添加帧头帧尾使之成为帧。</p>
+<ul>
+<li><p>帧头和帧尾包含有重要的控制信息。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071915058.png" alt="image-20211207191502859"></p>
+</li>
+<li><p>帧头和帧尾的作用之一就是帧定界（不是所有数据链路层协议都包含帧定界）</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071918935.png" alt="image-20211207191831589"></p>
+<ul>
+<li>  没有帧定界的数据链路层协议</li>
+</ul>
+<p>  <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071921226.png" alt="image-20211207192106050"></p>
+<p>前同步码传输时钟信号，帧开始定界符传输帧开始信号，不许要帧结束定界符，因为以太网V2规定了帧间间隔时间为96比特时间。</p>
+<p>​    <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071924524.png" alt="image-20211207192443497"></p>
+<h4 id="3-2-2透明传输"><a href="#3-2-2透明传输" class="headerlink" title="3.2.2透明传输"></a>3.2.2透明传输</h4><p>透明传输是指数据链路层对上层的传输数据没有限制，就好像数据链路层不存在一样。</p>
+<p>数据链路层对上层交付的协议数据单元有限制，其内容不能包含帧定界符。</p>
+<ul>
+<li>面向字节的物理链路使用字节填充（或字符填充）的方法实现透明传输</li>
+</ul>
+<p>解决方法：没出现一次帧定界符就插入一个转义字符（一种特殊的控制字符，长度为一个字节）。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071930825.png" alt="image-20211207193016595"></p>
+<ul>
+<li> 面向比特的物理链路使用比特填充的方法实现透明传输</li>
+</ul>
+<p>解决方法（特例）：每五个连续的比特1后面插入一个比特0</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071935062.png" alt="image-20211207193555993"></p>
+<p>习题： </p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071937918.png" alt="image-20211207193716073"></p>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul>
+<li>为了提高帧的传输效率，应当使者的数据部分的长度尽可能大一些。</li>
+<li>考虑到差错控制等多种因素，每种数据链路层协议都规定了帧的数据部分长度上线，即最大传送单元MTU（Maximum Transfer Unit）</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071940570.png" alt="image-20211207194057186"></p>
+<h2 id="3-3差错检测"><a href="#3-3差错检测" class="headerlink" title="3.3差错检测"></a>3.3差错检测</h2><ul>
+<li><p><strong>比特差错</strong>：实际的通信链路都是不理想的，比特在传输过程中可能会产生差错：1可能变成0，而0也可能变成1。</p>
+</li>
+<li><p>在一段时间内，传输错误的比特占所传输比特总数的比率称为<strong>误码率BER</strong>（Bit Error Rate）</p>
+</li>
+<li><p>使用<strong>差错检测码</strong>来检测数据在传输过程中是否产生了比特差错，是数据链路层所要解决的重要问题之一。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081329336.png" alt="image-20211208132909083"></p>
+<p>FCS帧检测序列，检测帧在传输过程中是否产生了误码。</p>
+<h3 id="奇偶校验"><a href="#奇偶校验" class="headerlink" title="奇偶校验"></a>奇偶校验</h3><ul>
+<li><p>在待发送的数据后面<strong>添加1位奇偶校验位</strong>，使得整个数据（包括所添加的检验位在内）中<strong>“1”的个数</strong>为奇数（奇校验）或偶数（偶校验）。</p>
+</li>
+<li><p>如果<strong>奇数个位发生误码</strong>，则奇偶性发生变化，<strong>可以检查出误码</strong>；</p>
+</li>
+<li><p>如果<strong>偶数个位发生误码</strong>，则奇偶性不发生变化，<strong>不能检查出误码</strong>；</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081335668.png" alt="image-20211208133527350"></p>
+<h3 id="循环冗余校验CRC（Cyclic-Redundancy-Check）"><a href="#循环冗余校验CRC（Cyclic-Redundancy-Check）" class="headerlink" title="循环冗余校验CRC（Cyclic Redundancy Check）"></a>循环冗余校验CRC（Cyclic Redundancy Check）</h3><ul>
+<li><p>收发双方约定好一个**生成多项式G(x)**；</p>
+</li>
+<li><p>发送放基于待发送的数据生成多项式计算出<strong>差错检测码（冗余码）</strong>，将其添加到待传输数据后面一起传输；</p>
+</li>
+<li><p>接收方通过生成多项式来计算收到的数据是否产生了误码。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081341493.png" alt="image-20211208134120212"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081342517.png" alt="image-20211208134249640"></p>
+<p><strong>练习：</strong></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081345362.png" alt="image-20211208134535420"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081347983.png" alt="image-20211208134700579"></p>
+<h3 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h3><ul>
+<li><p><strong>检错码</strong>只能检测出帧在传输过程中出现了差错，而并不能定位错误，因此<strong>无法纠正错误</strong>。</p>
+</li>
+<li><p>要想纠正传输中的差错，可以使用冗余信息更多的<strong>纠错码</strong>进行<strong>前向纠错</strong>。但纠错码的开销比较大，<strong>在计算机网络中较少使用</strong>。</p>
+</li>
+<li><p>循环冗余校验<strong>CRC</strong>有很好的检错能力<strong>（漏检率非常低）</strong>，虽然计算比较复杂，但非常<strong>易于用硬件实现</strong>，因此<strong>被广泛应用于数据链路层</strong>。</p>
+</li>
+<li><p>在计算机网络中通常采用我们后续将会提到的<strong>检错重传方式来纠正传输中的差错</strong>，<strong>或者仅仅是丢弃检测到差错的帧</strong>，这<strong>取决于数据链路层向其上层提供的是可靠传输服务还是不可靠传输服务</strong>。</p>
+</li>
+</ul>
+<h2 id="3-4可靠传输"><a href="#3-4可靠传输" class="headerlink" title="3.4可靠传输"></a>3.4可靠传输</h2><h3 id="3-4-1可靠传输的基本概念"><a href="#3-4-1可靠传输的基本概念" class="headerlink" title="3.4.1可靠传输的基本概念"></a>3.4.1可靠传输的基本概念</h3><ul>
+<li><p>使用<strong>差错检测技术</strong>（例如循环冗余校验CRC），接收方的数据链路层就可检测出帧在传输过程中是否产生了误码（比特错误）。</p>
+</li>
+<li><p>数据链路层向上层提供的服务类型：</p>
+<p><strong>不可靠传输服务</strong>:<strong>仅仅丢弃有误码的帧</strong>，其他什么也不做；</p>
+<p><strong>可靠传输服务</strong>：想办法实现<strong>发送端发送什么</strong>，<strong>接收端就收到什么</strong>。（接收方可以发送一个“之前传过来的帧有误码”通知帧）</p>
+</li>
+<li><p>一般情况下，<strong>有限链路的误码率比较低</strong>，为了减小开销，并<strong>不要求数据链路层</strong>向上提供<strong>可靠</strong>传输服务。即使出现了误码，可靠传输的问题<strong>由其上层处理</strong>。</p>
+</li>
+<li><p>但是对于<strong>无线链路</strong>，<strong>易受干扰</strong>，误码率比较高，因此<strong>要求数据链路层必须向上层提供可靠</strong>传输服务。</p>
+</li>
+<li><p><strong>传输差错</strong></p>
+<ul>
+<li>比特差错:实际的通信链路都是不理想的，比特在传输过程中可能会产生差错：1可能变成0，而0也可能变成1。</li>
+<li>一下的三种一般不会出现在数据链路层，而会出现在其上层。因此**<u>==可靠传输服务并不仅限于数据链路层==</u><strong>，其他各层均可选择实现可靠传输服务。可靠传输的实现比较复杂，</strong>开销<strong>也</strong>比较大<strong>，</strong>是否使用可靠传输取决于应用需求**。</li>
+<li>**分组丢失:**被一些交换机的分组丢弃策略丢弃了。</li>
+<li><strong>分组失序</strong>：发送的分组并未按照发送顺序依次到达接收方。</li>
+<li><strong>分组重复</strong>：发送数据时，因为某些原因滞留了，发送方超时重发，过一段时间接收方收到了两份数据。</li>
+</ul>
+</li>
+</ul>
+<p> <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081840726.png" alt="image-20211208184013691"></p>
+<h3 id="3-4-2可靠传输的实现机制1-停止-等待协议SW（Stop-and-Wait）"><a href="#3-4-2可靠传输的实现机制1-停止-等待协议SW（Stop-and-Wait）" class="headerlink" title="3.4.2可靠传输的实现机制1:停止-等待协议SW（Stop-and-Wait）"></a>3.4.2可靠传输的实现机制1:停止-等待协议SW（Stop-and-Wait）</h3><p><strong>ACK:确认分组，NAK否认分组。</strong>这种协议常成为自动请求重传ARQ（Automatic Repeat Quest）</p>
+<p><strong>超时重传；确认丢失；确认迟到</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081903476.png" alt="image-20211208190329017"></p>
+<p>  <strong>停止等待协议的信道利用率</strong>：</p>
+<p><strong>$T_D$</strong> :发送方发送数据分组所耗费的发送时延</p>
+<p>RTT：收发双方之间的往返时间</p>
+<p>$T_A$:接受方发送确认分组所耗费的发送时延</p>
+<p>图中忽略了接受方队数据分组的处理时延，以及发送方队确认分组的处理时延</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081906565.png" alt="image-20211208190623400"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081907475.png" alt="image-20211208190749288"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081908695.png" alt="image-20211208190811768"></p>
+<p><strong>习题：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081910489.png" alt="image-20211208191038100"></p>
+<h3 id="3-4-3可靠传输的实现机制2-退回N帧协议GBN（GO-Back-N）"><a href="#3-4-3可靠传输的实现机制2-退回N帧协议GBN（GO-Back-N）" class="headerlink" title="3.4.3可靠传输的实现机制2:退回N帧协议GBN（GO-Back-N）"></a>3.4.3可靠传输的实现机制2:退回N帧协议GBN（GO-Back-N）</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082133957.png" alt="image-20211208213323735"></p>
+<p>当$W_T$=1时就为停止-等待协议。</p>
+<ul>
+<li><p><strong>无差错情况</strong></p>
+<p>其中2的3次方中的3是分组序号的比特数量</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082237222.png" alt="image-20211208213837164"></p>
+<ul>
+<li><strong>累积确认</strong></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082237495.png" alt="image-20211208223241796"></p>
+<p>减少接收方的开销，减小网络资源的占用。缺点是不能即使反应接收方已经正确接收的数据分组信息</p>
+<ul>
+<li><p>有差错情况</p>
+<p>如果5出现了误码，一整串都不会接收，然后发送的ACK4是上一次的。</p>
+<p>发送方收到重复的确认，就知道之前所发送的数据分组出现了差错，于是可以不等超时计时器超时就立即重传！</p>
+<p>至于收到几个重复确认就立即重传，由具体实现决定。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082237091.png" alt="image-20211208223717579"></p>
+<ul>
+<li><p>$W_T$取值超出情况</p>
+<p>如果返回的ACK7丢失了会导致超时重传，接收方无法分辨新、旧的数据分组。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082248430.png" alt="image-20211208224836850"></p>
+</li>
+</ul>
+<h4 id="小结："><a href="#小结：" class="headerlink" title="小结："></a>小结：</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082252704.png" alt="image-20211208225226113"></p>
+<p><strong>习题：</strong><br><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082255918.png" alt="image-20211208225527671"></p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082256135.png" alt="image-20211208225634996"></p>
+<h3 id="3-4-3可靠传输的实现机制3-选择重传协议SR（GO-Back-N）"><a href="#3-4-3可靠传输的实现机制3-选择重传协议SR（GO-Back-N）" class="headerlink" title="3.4.3可靠传输的实现机制3:选择重传协议SR（GO-Back-N）"></a>3.4.3可靠传输的实现机制3:选择重传协议SR（GO-Back-N）</h3><h4 id="引言："><a href="#引言：" class="headerlink" title="引言："></a>引言：</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112091823618.png" alt="image-20211209182319573"></p>
+<h4 id="注意：-2"><a href="#注意：-2" class="headerlink" title="注意："></a>注意：</h4><p>​    <strong>选择重传协议</strong>为了使发送方仅重传出现差错的分组，接收方<strong>不能再采用累积确认</strong>，而需要对每个正确接收到的数据分组进行<strong>逐一确认</strong>。</p>
+<h4 id="选择重传协议SR传输过程"><a href="#选择重传协议SR传输过程" class="headerlink" title="选择重传协议SR传输过程"></a>选择重传协议SR传输过程</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092021837.png" alt="image-20211209201517471"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022134.png" alt="image-20211209201641668"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022551.png" alt="image-20211209201809984"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022973.png" alt="image-20211209201936308"></p>
+<p>  <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022750.png" alt="image-20211209202151314"></p>
+<h4 id="假设超出尺寸ACK0丢失，导致分组重复"><a href="#假设超出尺寸ACK0丢失，导致分组重复" class="headerlink" title="假设超出尺寸ACK0丢失，导致分组重复"></a>假设超出尺寸ACK0丢失，导致分组重复</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122252444.png" alt="image-20211209202530257"></p>
+<h4 id="小结：-1"><a href="#小结：-1" class="headerlink" title="小结："></a>小结：</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092032021.png" alt="image-20211209203252762"></p>
+<p><strong>习题</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092035786.png" alt="image-20211209203546705"></p>
+<h2 id="3-5点对点协议PPP"><a href="#3-5点对点协议PPP" class="headerlink" title="3.5点对点协议PPP"></a>3.5点对点协议PPP</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>在1999年公布的在以太网上运行的PPP协议，PPP over Ethernet 简称PPPoE。使得ISP可以通过DSL、电路调制解调器、以太网等宽带接入技术，以以太网接入的形式为用户提供接入服务。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092042841.png" alt="image-20211209204250523"></p>
+<p>点对点协议PPP也广泛应用于广域网路由器之间的专用线路。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092043430.png" alt="image-20211209204357412"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092044974.png" alt="image-20211209204455965"></p>
+<h3 id="PPP协议的标准方法"><a href="#PPP协议的标准方法" class="headerlink" title="PPP协议的标准方法"></a>PPP协议的标准方法</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092047613.png" alt="image-20211209204725218"></p>
+<h3 id="PPP协议的帧格式"><a href="#PPP协议的帧格式" class="headerlink" title="PPP协议的帧格式"></a>PPP协议的帧格式</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092049505.png" alt="image-20211209204949335"></p>
+<h3 id="PPP协议实现透明传输的方法"><a href="#PPP协议实现透明传输的方法" class="headerlink" title="PPP协议实现透明传输的方法"></a>PPP协议实现透明传输的方法</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092051643.png" alt="image-20211209205145242"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092053390.png" alt="image-20211209205309066"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092057941.png" alt="image-20211209205707904"></p>
+<h3 id="PPP协议实现差错检车的方法"><a href="#PPP协议实现差错检车的方法" class="headerlink" title="PPP协议实现差错检车的方法"></a>PPP协议实现差错检车的方法</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092059786.png" alt="image-20211209205904741"></p>
+<h3 id="PPP协议的工作状态（以拨号接入为例）"><a href="#PPP协议的工作状态（以拨号接入为例）" class="headerlink" title="PPP协议的工作状态（以拨号接入为例）"></a>PPP协议的工作状态（以拨号接入为例）</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092103351.png" alt="image-20211209210306359"></p>
+<h2 id="3-6媒体接入"><a href="#3-6媒体接入" class="headerlink" title="3.6媒体接入"></a>3.6媒体接入</h2><h3 id="3-6-1媒体接入控制的基本概念"><a href="#3-6-1媒体接入控制的基本概念" class="headerlink" title="3.6.1媒体接入控制的基本概念"></a>3.6.1媒体接入控制的基本概念</h3><p><strong>简介：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101216891.png" alt="image-20211210114911276"></p>
+<p><strong>分类：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101153373.png" alt="image-20211210115333681"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101153366.png" alt="image-20211210115346240"></p>
+<h3 id="3-6-2媒体接入控制-静态划分信道"><a href="#3-6-2媒体接入控制-静态划分信道" class="headerlink" title="3.6.2媒体接入控制-静态划分信道"></a>3.6.2媒体接入控制-静态划分信道</h3><h4 id="信道复用"><a href="#信道复用" class="headerlink" title="信道复用"></a>信道复用</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101200094.png" alt="image-20211210120035844"></p>
+<h5 id="四种常见的信道复用技术（静态划分信道）："><a href="#四种常见的信道复用技术（静态划分信道）：" class="headerlink" title="四种常见的信道复用技术（静态划分信道）："></a>四种常见的信道复用技术（静态划分信道）：</h5><h5 id="频分信道复用（FDM）"><a href="#频分信道复用（FDM）" class="headerlink" title="频分信道复用（FDM）"></a>频分信道复用（FDM）</h5><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101203279.png" alt="image-20211210120320224"></p>
+<p>分子信道，每个子信道之间有隔离频带，当多路信号输入一个多路复用器时，这个复用器将每一路信号调制到不同频率的载波上，接收端由相应的分用器通过滤波将各路信号分开，将合成的复用信号恢复成原始的多路信号。</p>
+<p><strong>时分复用（TDM）</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101208585.png" alt="image-20211210120804443"></p>
+<p>时分复用技术将传输线路的带宽资源，按时隙轮流分配给不同的用户，每对用户只在所分配的时隙里使用线路传输数据，时分复用技术将时间划分成了一段段等长的时分复用帧，每一个时分复用的用户在每一个时分复用帧中占用固定序号的时隙。每一个用户所占用的时隙是周期性出现的，其周期就是时分复用帧的长度。时分复用的所有用户在不同的时间占用同样的频带宽度。</p>
+<h5 id="波分复用（WDM）"><a href="#波分复用（WDM）" class="headerlink" title="波分复用（WDM）"></a>波分复用（WDM）</h5><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101218002.png" alt="image-20211210121820778"></p>
+<p>波分复用其实就是光的频分复用。光复用器也叫合波器，光信号传输一段距离后会衰减，因此对衰减了的光信号必须进行放大才能继续传输。光复用器和光分用器之间可以插入4个EDFA，使得光复用器和光分用器之间的无光电转换的距离达到600KM。</p>
+<h5 id="码分复用（CDM）"><a href="#码分复用（CDM）" class="headerlink" title="码分复用（CDM）"></a>码分复用（CDM）</h5><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101244381.png" alt="image-20211210124437040"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101248785.png" alt="image-20211210124818631"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101253603.png" alt="image-20211210125303212"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101254586.png" alt="image-20211210125453561"></p>
+<p><strong>习题一</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101932896.png" alt="image-20211210193219770"></p>
+<p><strong>应用举例：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101946702.png" alt="image-20211210194647555"></p>
+<p><strong>习题二</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101948839.png" alt="image-20211210194835254"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101949968.png" alt="image-20211210194910984"></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101949068.png" alt="image-20211210194940071"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101950651.png" alt="image-20211210195006672"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101950826.png" alt="image-20211210195015692"><strong>习题三:</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101953523.png" alt="image-20211210195259678"></p>
+<h3 id="3-6-3媒体接入控制-动态划分信道"><a href="#3-6-3媒体接入控制-动态划分信道" class="headerlink" title="3.6.3媒体接入控制-动态划分信道"></a>3.6.3媒体接入控制-动态划分信道</h3><h4 id="随机接入"><a href="#随机接入" class="headerlink" title="随机接入"></a>随机接入</h4><p><strong>问题：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101956042.png" alt="image-20211210195642065"></p>
+<p><strong>解决：</strong></p>
+<h5 id="总线局域网使用的协议CSMA-CD"><a href="#总线局域网使用的协议CSMA-CD" class="headerlink" title="总线局域网使用的协议CSMA/CD"></a>总线局域网使用的协议CSMA/CD</h5><p>  其中96比特时间是指发送96比特所耗费的时间，又称为帧间最小间隔。其作用是使接收方可以检测出一个帧的结束，同时也使得所有其他站点都能有机会平等竞争信道并发送帧。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102001996.png" alt="image-20211210200111981"></p>
+<h6 id="流程："><a href="#流程：" class="headerlink" title="流程："></a>流程：</h6><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102003187.png" alt="image-20211210200346844"></p>
+<p><strong>争用期</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102010247.png" alt="image-20211210201050705"></p>
+<p><strong>最小帧长</strong>：</p>
+<p>主机A发送了一个很短的帧</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102015114.png" alt="image-20211210201536684"></p>
+<p><strong>最大帧长</strong>:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122251738.png" alt="image-20211210201729443"></p>
+<p><strong>截断二进制指数退避算法</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102021562.png" alt="image-20211210202127772"></p>
+<p><strong>信道利用率</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102023464.png" alt="image-20211210202317047"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102023684.png" alt="image-20211210202357593"></p>
+<p><strong>帧发送流程</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102024463.png" alt="image-20211210202454337"></p>
+<p><strong>帧接收流程</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102026535.png" alt="image-20211210202607190"></p>
+<p><strong>习题</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102028137.png" alt="image-20211210202806180"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102031869.png" alt="image-20211210203102639"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102033875.png" alt="image-20211210203329710"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102034809.png" alt="image-20211210203434650"></p>
+<p><strong>小结</strong>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102035088.png" alt="image-20211210203529097"></p>
+<h5 id="无线局域网使用的协议：CSMA-CA"><a href="#无线局域网使用的协议：CSMA-CA" class="headerlink" title="无线局域网使用的协议：CSMA/CA"></a>无线局域网使用的协议：CSMA/CA</h5><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102224998.png" alt="image-20211210222425475"></p>
+<p><strong>隐蔽站问题：</strong>未能检测出信道上其他站点信号的问题</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102226440.png" alt="image-20211210222620361"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102228702.png" alt="image-20211210222806202"></p>
+<p> <strong>帧间间隔(IFS)</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102230979.png" alt="image-20211210223048810"></p>
+<h6 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h6><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102235280.png" alt="image-20211210223539531"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102236633.png" alt="image-20211210223623634"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102237117.png" alt="image-20211210223739208"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102239268.png" alt="image-20211210223905153"></p>
+<h6 id="退避算法"><a href="#退避算法" class="headerlink" title="退避算法"></a>退避算法</h6><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102240069.png" alt="image-20211210224030019"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102246396.png" alt="image-20211210224608306"></p>
+<p>信道预约和虚拟载波监听</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102249238.png" alt="image-20211210224811329"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102249020.png" alt="image-20211210224943797"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102250624.png" alt="image-20211210225058681"></p>
+<p>A发送给BRTS帧时，C收不到A的RTS，但是能收到B给A发送的CTS</p>
+<h6 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h6><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102253670.png" alt="image-20211210225323285"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102254613.png" alt="image-20211210225416538"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102255399.png" alt="image-20211210225505325"></p>
+<h2 id="3-7MAC地址、IP地址以及ARP协议"><a href="#3-7MAC地址、IP地址以及ARP协议" class="headerlink" title="3.7MAC地址、IP地址以及ARP协议"></a>3.7MAC地址、IP地址以及ARP协议</h2><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111410231.png" alt="image-20211211140905951"></p>
+<h3 id="3-7-1MAC地址"><a href="#3-7-1MAC地址" class="headerlink" title="3.7.1MAC地址"></a>3.7.1MAC地址</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111410307.png" alt="image-20211211141038153"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111415755.png" alt="image-20211211141326633"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111415855.png" alt="image-20211211141519486"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111417807.png" alt="image-20211211141725717"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111420562.png" alt="image-20211211142049489"></p>
+<h4 id="IEEE-802局域网MAC地址格式："><a href="#IEEE-802局域网MAC地址格式：" class="headerlink" title="IEEE 802局域网MAC地址格式："></a><strong>IEEE 802局域网MAC地址格式：</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111456157.png" alt="image-20211211145633358"></p>
+<p>IEEE分配，MAC地址查询</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111457151.png" alt="image-20211211145748733"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111459975.png" alt="image-20211211145905059"></p>
+<p>四种类型的MAC地址：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111502254.png" alt="image-20211211150205252"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111503743.png" alt="image-20211211150322772"></p>
+<h4 id="MAC地址发送顺序"><a href="#MAC地址发送顺序" class="headerlink" title="MAC地址发送顺序"></a>MAC地址发送顺序</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250429.png" alt="image-20211211150501139"></p>
+<p><strong>单播地址：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111507867.png" alt="image-20211211150756550"></p>
+<p><strong>广播MAC地址：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111509123.png" alt="image-20211211150908160"></p>
+<p><strong>多播MAC地址：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111510760.png" alt="image-20211211151035622"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111512792.png" alt="image-20211211151227773"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111513822.png" alt="image-20211211151259592"></p>
+<p><strong>随机MAC地址：</strong></p>
+<p>固定的MAC地址会被查到，现在很多移动设备用的都是随机MAC地址了。</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111513522.png" alt="image-20211211151347255"></p>
+<h3 id="3-7-2IP地址"><a href="#3-7-2IP地址" class="headerlink" title="3.7.2IP地址"></a>3.7.2IP地址</h3><p>在日常的大多数网络应用中，属于链路层的MAC地址，和属于网络层的IP地址都在使用，它们之间存在一定的关系。</p>
+<h4 id="IP地址的作用"><a href="#IP地址的作用" class="headerlink" title="IP地址的作用"></a>IP地址的作用</h4><ul>
+<li><p>同一个网络上的各主机和路由器的各接口的IP地址的网络号部分应该相同，而主机号部分应该互不相同。</p>
+</li>
+<li><p>因特网中不同网络的网络编号必须各不相同。</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111847209.png" alt="image-20211211184700845"></p>
+<p><strong>从网络体系结构看IP地址与MAC地址</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111852736.png" alt="image-20211211185224718"></p>
+<p><strong>数据包转发过程中IP地址与MAC地址的变化情况：</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111856195.png" alt="image-20211211185639744"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111904185.png" alt="image-20211211190411029"></p>
+<h4 id="习题："><a href="#习题：" class="headerlink" title="习题："></a>习题：</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111908201.png" alt="image-20211211190852148"></p>
+<h3 id="3-7-3ARP协议"><a href="#3-7-3ARP协议" class="headerlink" title="3.7.3ARP协议"></a>3.7.3ARP协议</h3><p>如何通过IP地址找到MAC地址</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111912817.png" alt="image-20211211191215821"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111918208.png" alt="image-20211211191804214"></p>
+<p><strong>需要请求ARP</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111920431.png" alt="image-20211211192050352"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111921384.png" alt="image-20211211192130136"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111923091.png" alt="image-20211211192323297"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111925039.png" alt="image-20211211192501051"></p>
+<p>换网卡了IP和MAC地址就不一定匹配了。</p>
+<h4 id="注意：-3"><a href="#注意：-3" class="headerlink" title="注意："></a>注意：</h4><p> H1不能通过ARP找到H2，ARP只能在一段链路或一个网络上使用，而不能跨网络使用。ARP协议需要逐段链路进行。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111930039.png" alt="image-20211211193026669"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111932662.png" alt="image-20211211193210646"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111931372.png" alt="image-20211211193151409"></p>
+<h2 id="3-8集线器与交换机的区别"><a href="#3-8集线器与交换机的区别" class="headerlink" title="3.8集线器与交换机的区别"></a>3.8集线器与交换机的区别</h2><h4 id="早期的总线型以太网"><a href="#早期的总线型以太网" class="headerlink" title="早期的总线型以太网"></a>早期的总线型以太网</h4><p>这种使用无源电缆而且有大量机械链接点的以太网并不可靠</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112037659.png" alt="image-20211211203721522"></p>
+<h4 id="使用双绞线和集线器HUB的星型以太网"><a href="#使用双绞线和集线器HUB的星型以太网" class="headerlink" title="使用双绞线和集线器HUB的星型以太网"></a>使用双绞线和集线器HUB的星型以太网</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112039247.png" alt="image-20211211203938218"></p>
+<h4 id="使用集线器HUB在物理层扩展以太网"><a href="#使用集线器HUB在物理层扩展以太网" class="headerlink" title="使用集线器HUB在物理层扩展以太网"></a>使用集线器HUB在物理层扩展以太网</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112042924.png" alt="image-20211211204249093"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112043030.png" alt="image-20211211204324871"></p>
+<p><strong>更为先进的以太网交换机：</strong></p>
+<p> <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112101719.png" alt="image-20211211210101429"></p>
+<p>集线器HUB只能半双工进行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112111285.png" alt="image-20211211211124007"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112121282.png" alt="image-20211211212027305"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112121677.png" alt="image-20211211212112268"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112121926.png" alt="image-20211211212157926"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112122337.png" alt="image-20211211212251379"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112123066.png" alt="image-20211211212329783"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250299.png" alt="image-20211211212344949"></p>
+<h2 id="3-9以太网交换机自学习和转发帧的流程"><a href="#3-9以太网交换机自学习和转发帧的流程" class="headerlink" title="3.9以太网交换机自学习和转发帧的流程"></a>3.9以太网交换机自学习和转发帧的流程</h2><p><img src="image-20211212220023920.png" alt="image-20211212220023920"></p>
+<p>假设各主机知道网络中其他各主机的MAC地址（无需进行ARP）</p>
+<p><strong>交换机自学习</strong>：</p>
+<p>在传输的时候登记MAC地址和接口，记录A的MAC地址和接口是1</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122208052.png" alt="image-20211212220841651"></p>
+<p>查到A的地址，明确转发，交换机1记录B的MAC地址，接口是3</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122210468.png" alt="image-20211212221015113"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122212648.png" alt="image-20211212221246692"></p>
+<p><strong>丢弃帧的情况：</strong>交换机1把G-&gt;A的帧直接丢弃，交换机2和BC都不会收到</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250916.png" alt="image-20211212221557128"></p>
+<p>换卡和主机换了都会导致MAC地址改变：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122218530.png" alt="image-20211212221827555"></p>
+<h3 id="习题：-1"><a href="#习题：-1" class="headerlink" title="习题："></a>习题：</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122220222.png" alt="image-20211212222017860"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122221717.png" alt="image-20211212222127838"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122224658.png" alt="image-20211212222359737"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122224492.png" alt="image-20211212222442432"></p>
+<h2 id="3-10以太网交换机的生成树协议STP"><a href="#3-10以太网交换机的生成树协议STP" class="headerlink" title="3.10以太网交换机的生成树协议STP"></a>3.10以太网交换机的生成树协议STP</h2><h3 id="如何提高以太网的可靠性："><a href="#如何提高以太网的可靠性：" class="headerlink" title="如何提高以太网的可靠性："></a>如何提高以太网的可靠性：</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122226380.png" alt="image-20211212222652838"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122230345.png" alt="image-20211212223023364"></p>
+<p>生成树协议STP</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122233770.png" alt="image-20211212223300560"></p>
+<h2 id="3-11虚拟局域网VLAN"><a href="#3-11虚拟局域网VLAN" class="headerlink" title="3.11虚拟局域网VLAN"></a>3.11虚拟局域网VLAN</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122243141.png" alt="image-20211212224324903"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122244942.png" alt="image-20211212224414993"></p>
+<p><strong>路由器工作在网络层，默认情况下不转发广播数据包</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122245269.png" alt="image-20211212224540076"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122247088.png" alt="image-20211212224724968"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122248559.png" alt="image-20211212224815457"></p>
+<p><strong>划分两个虚拟局域网，同意VLAN之间可以广播通信，不同则不能</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122249913.png" alt="image-20211212224942843"></p>
+<h3 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h3><h4 id="需要实现的功能："><a href="#需要实现的功能：" class="headerlink" title="需要实现的功能："></a><strong>需要实现的功能：</strong></h4><ul>
+<li>能够处理带有VLAN标记的帧（IEEE 802.1Q帧）。</li>
+<li>交换机的各端口可以支持不同的端口类型，不同端口对帧的处理方式也会有所不同。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131028287.png" alt="image-20211213095145534"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112130954997.png" alt="image-20211213095415878"></p>
+<p>思科交换机没有Hybrid端口</p>
+<h4 id="Access端口"><a href="#Access端口" class="headerlink" title="Access端口"></a>Access端口</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112130958774.png" alt="image-20211213095808861"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112130959697.png" alt="image-20211213095956828"></p>
+<h4 id="Trunk端口"><a href="#Trunk端口" class="headerlink" title="Trunk端口"></a>Trunk端口</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131017203.png" alt="image-20211213101756568"></p>
+<p>VID不等于直接转发</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131019031.png" alt="image-20211213101927738"></p>
+<h4 id="习题：-2"><a href="#习题：-2" class="headerlink" title="习题："></a>习题：</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131020430.png" alt="image-20211213102054203"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131023634.png" alt="image-20211213102332333"></p>
+<h4 id="华为私有的Habrid端口"><a href="#华为私有的Habrid端口" class="headerlink" title="华为私有的Habrid端口"></a>华为私有的Habrid端口</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131027201.png" alt="image-20211213102733765"></p>
 ]]></content>
   </entry>
 </search>

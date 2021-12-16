@@ -20,23 +20,207 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"yuzitech.github.io.git","root":"/","images":"/images","scheme":"Gemini","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta property="og:type" content="website">
+<meta name="description" content="第三章 数据链路层3.1数据链路层概述 通常情况下我们可以这样看网络体系结构  链路（Link）就是从一个结点到相邻结点的一段物理线路，而中间没有任何其他的交换结点。 数据链路（Data Link）是指把视线通信协议的硬件和软件加到链路上，就构成了数据链路。 数据链路层以帧为单位传输和处理数据。 3.1.1数据链路层的三个重要问题基于点对点信道的数据链路层举例 封装成帧（封装帧头和帧尾）   差错">
+<meta property="og:type" content="article">
 <meta property="og:title" content="YuBlog">
-<meta property="og:url" content="http://yuzitech.github.io.git/index.html">
+<meta property="og:url" content="http://yuzitech.github.io.git/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/index.html">
 <meta property="og:site_name" content="YuBlog">
+<meta property="og:description" content="第三章 数据链路层3.1数据链路层概述 通常情况下我们可以这样看网络体系结构  链路（Link）就是从一个结点到相邻结点的一段物理线路，而中间没有任何其他的交换结点。 数据链路（Data Link）是指把视线通信协议的硬件和软件加到链路上，就构成了数据链路。 数据链路层以帧为单位传输和处理数据。 3.1.1数据链路层的三个重要问题基于点对点信道的数据链路层举例 封装成帧（封装帧头和帧尾）   差错">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071733311.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071742728.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071749764.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071751666.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071756361.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071800928.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071805245.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071806827.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071809879.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071915058.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071918935.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071921226.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071924524.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071930825.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071935062.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071937918.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071940570.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081329336.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081335668.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081341493.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081342517.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081345362.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081347983.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081840726.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081903476.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081906565.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081907475.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081908695.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112081910489.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082133957.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082237222.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082237495.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082237091.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082248430.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082252704.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082255918.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112082256135.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112091823618.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092021837.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022134.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022551.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022973.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092022750.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122252444.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092032021.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092035786.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092042841.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092043430.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092044974.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092047613.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092049505.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092051643.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092053390.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092057941.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092059786.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112092103351.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101216891.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101153373.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101153366.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101200094.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101203279.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101208585.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101218002.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101244381.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101248785.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101253603.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101254586.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101932896.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101946702.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101948839.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101949968.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101949068.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101950651.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101950826.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101953523.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112101956042.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102001996.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102003187.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102010247.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102015114.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122251738.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102021562.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102023464.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102023684.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102024463.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102026535.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102028137.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102031869.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102033875.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102034809.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102035088.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102224998.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102226440.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102228702.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102230979.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102235280.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102236633.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102237117.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102239268.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102240069.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102246396.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102249238.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102249020.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102250624.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102253670.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102254613.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112102255399.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111410231.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111410307.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111415755.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111415855.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111417807.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111420562.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111456157.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111457151.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111459975.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111502254.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111503743.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250429.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111507867.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111509123.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111510760.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111512792.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111513822.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111513522.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111847209.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111852736.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111856195.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111904185.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111908201.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111912817.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111918208.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111920431.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111921384.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111923091.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111925039.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111930039.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111932662.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112111931372.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112037659.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112039247.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112042924.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112043030.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112101719.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112111285.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112121282.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112121677.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112121926.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112122337.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112123066.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250299.png">
+<meta property="og:image" content="http://yuzitech.github.io.git/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/image-20211212220023920.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122208052.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122210468.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122212648.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250916.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122218530.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122220222.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122221717.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122224658.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122224492.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122226380.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122230345.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122233770.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122243141.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122244942.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122245269.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122247088.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122248559.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122249913.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131028287.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112130954997.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112130958774.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112130959697.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131017203.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131019031.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131020430.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131023634.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131027201.png">
+<meta property="article:published_time" content="2021-12-16T08:20:51.567Z">
+<meta property="article:modified_time" content="2021-12-13T02:28:05.363Z">
 <meta property="article:author" content="HikoYu">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071733311.png">
 
 
-<link rel="canonical" href="http://yuzitech.github.io.git/">
+<link rel="canonical" href="http://yuzitech.github.io.git/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://yuzitech.github.io.git/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/","path":"2021/12/16/第三章 数据链路层/","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>YuBlog</title>
+<title> | YuBlog</title>
   
 
 
@@ -129,7 +313,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -142,6 +326,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">第三章 数据链路层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">3.1数据链路层概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9A%84%E4%B8%89%E4%B8%AA%E9%87%8D%E8%A6%81%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.</span> <span class="nav-text">3.1.1数据链路层的三个重要问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%82%B9%E5%AF%B9%E7%82%B9%E4%BF%A1%E9%81%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">基于点对点信道的数据链路层举例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%B9%BF%E6%92%AD%E4%BF%A1%E9%81%93%E7%9A%84%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%EF%BC%88%E5%85%B1%E4%BA%AB%E5%BC%8F%E5%B1%80%E5%9F%9F%E7%BD%91%EF%BC%89%E8%BF%98%E6%9C%89%E4%B8%80%E4%B8%8B%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">使用广播信道的数据链路层（共享式局域网）还有一下问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E7%9A%84%E4%BA%92%E8%BF%9E%E8%AE%BE%E5%A4%87"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">数据链路层的互连设备</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="nav-number">1.2.</span> <span class="nav-text">3.2封装成帧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1%E4%BB%80%E4%B9%88%E6%98%AF%E5%B0%81%E8%A3%85%E6%88%90%E5%B8%A7"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">3.2.1什么是封装成帧</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">3.2.2透明传输</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">注意：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3%E5%B7%AE%E9%94%99%E6%A3%80%E6%B5%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3.3差错检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A5%87%E5%81%B6%E6%A0%A1%E9%AA%8C"><span class="nav-number">1.3.1.</span> <span class="nav-text">奇偶校验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%97%E4%BD%99%E6%A0%A1%E9%AA%8CCRC%EF%BC%88Cyclic-Redundancy-Check%EF%BC%89"><span class="nav-number">1.3.2.</span> <span class="nav-text">循环冗余校验CRC（Cyclic Redundancy Check）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93"><span class="nav-number">1.4.</span> <span class="nav-text">3.4可靠传输</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-1%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.4.1可靠传输的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-2%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B61-%E5%81%9C%E6%AD%A2-%E7%AD%89%E5%BE%85%E5%8D%8F%E8%AE%AESW%EF%BC%88Stop-and-Wait%EF%BC%89"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.4.2可靠传输的实现机制1:停止-等待协议SW（Stop-and-Wait）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B62-%E9%80%80%E5%9B%9EN%E5%B8%A7%E5%8D%8F%E8%AE%AEGBN%EF%BC%88GO-Back-N%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.4.3可靠传输的实现机制2:退回N帧协议GBN（GO-Back-N）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%9A"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">小结：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-3%E5%8F%AF%E9%9D%A0%E4%BC%A0%E8%BE%93%E7%9A%84%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B63-%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AESR%EF%BC%88GO-Back-N%EF%BC%89"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4.3可靠传输的实现机制3:选择重传协议SR（GO-Back-N）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E8%A8%80%EF%BC%9A"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">引言：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-2"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">注意：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AESR%E4%BC%A0%E8%BE%93%E8%BF%87%E7%A8%8B"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">选择重传协议SR传输过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%81%87%E8%AE%BE%E8%B6%85%E5%87%BA%E5%B0%BA%E5%AF%B8ACK0%E4%B8%A2%E5%A4%B1%EF%BC%8C%E5%AF%BC%E8%87%B4%E5%88%86%E7%BB%84%E9%87%8D%E5%A4%8D"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">假设超出尺寸ACK0丢失，导致分组重复</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93%EF%BC%9A-1"><span class="nav-number">1.4.4.5.</span> <span class="nav-text">小结：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-5%E7%82%B9%E5%AF%B9%E7%82%B9%E5%8D%8F%E8%AE%AEPPP"><span class="nav-number">1.5.</span> <span class="nav-text">3.5点对点协议PPP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.5.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E6%A0%87%E5%87%86%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.2.</span> <span class="nav-text">PPP协议的标准方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B8%A7%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.5.3.</span> <span class="nav-text">PPP协议的帧格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E7%8E%B0%E9%80%8F%E6%98%8E%E4%BC%A0%E8%BE%93%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.4.</span> <span class="nav-text">PPP协议实现透明传输的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E5%AE%9E%E7%8E%B0%E5%B7%AE%E9%94%99%E6%A3%80%E8%BD%A6%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-number">1.5.5.</span> <span class="nav-text">PPP协议实现差错检车的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PPP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%B7%A5%E4%BD%9C%E7%8A%B6%E6%80%81%EF%BC%88%E4%BB%A5%E6%8B%A8%E5%8F%B7%E6%8E%A5%E5%85%A5%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="nav-number">1.5.6.</span> <span class="nav-text">PPP协议的工作状态（以拨号接入为例）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-6%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5"><span class="nav-number">1.6.</span> <span class="nav-text">3.6媒体接入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-1%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E6%8E%A7%E5%88%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.6.1.</span> <span class="nav-text">3.6.1媒体接入控制的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-2%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E6%8E%A7%E5%88%B6-%E9%9D%99%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93"><span class="nav-number">1.6.2.</span> <span class="nav-text">3.6.2媒体接入控制-静态划分信道</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">信道复用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%9B%E7%A7%8D%E5%B8%B8%E8%A7%81%E7%9A%84%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF%EF%BC%88%E9%9D%99%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93%EF%BC%89%EF%BC%9A"><span class="nav-number">1.6.2.1.1.</span> <span class="nav-text">四种常见的信道复用技术（静态划分信道）：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%91%E5%88%86%E4%BF%A1%E9%81%93%E5%A4%8D%E7%94%A8%EF%BC%88FDM%EF%BC%89"><span class="nav-number">1.6.2.1.2.</span> <span class="nav-text">频分信道复用（FDM）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A2%E5%88%86%E5%A4%8D%E7%94%A8%EF%BC%88WDM%EF%BC%89"><span class="nav-number">1.6.2.1.3.</span> <span class="nav-text">波分复用（WDM）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A0%81%E5%88%86%E5%A4%8D%E7%94%A8%EF%BC%88CDM%EF%BC%89"><span class="nav-number">1.6.2.1.4.</span> <span class="nav-text">码分复用（CDM）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-3%E5%AA%92%E4%BD%93%E6%8E%A5%E5%85%A5%E6%8E%A7%E5%88%B6-%E5%8A%A8%E6%80%81%E5%88%92%E5%88%86%E4%BF%A1%E9%81%93"><span class="nav-number">1.6.3.</span> <span class="nav-text">3.6.3媒体接入控制-动态划分信道</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E6%8E%A5%E5%85%A5"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">随机接入</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8D%8F%E8%AE%AECSMA-CD"><span class="nav-number">1.6.3.1.1.</span> <span class="nav-text">总线局域网使用的协议CSMA&#x2F;CD</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-number">1.6.3.1.1.1.</span> <span class="nav-text">流程：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91%E4%BD%BF%E7%94%A8%E7%9A%84%E5%8D%8F%E8%AE%AE%EF%BC%9ACSMA-CA"><span class="nav-number">1.6.3.1.2.</span> <span class="nav-text">无线局域网使用的协议：CSMA&#x2F;CA</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">1.6.3.1.2.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%80%E9%81%BF%E7%AE%97%E6%B3%95"><span class="nav-number">1.6.3.1.2.2.</span> <span class="nav-text">退避算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98"><span class="nav-number">1.6.3.1.2.3.</span> <span class="nav-text">习题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-7MAC%E5%9C%B0%E5%9D%80%E3%80%81IP%E5%9C%B0%E5%9D%80%E4%BB%A5%E5%8F%8AARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.7.</span> <span class="nav-text">3.7MAC地址、IP地址以及ARP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-1MAC%E5%9C%B0%E5%9D%80"><span class="nav-number">1.7.1.</span> <span class="nav-text">3.7.1MAC地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IEEE-802%E5%B1%80%E5%9F%9F%E7%BD%91MAC%E5%9C%B0%E5%9D%80%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.7.1.1.</span> <span class="nav-text">IEEE 802局域网MAC地址格式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MAC%E5%9C%B0%E5%9D%80%E5%8F%91%E9%80%81%E9%A1%BA%E5%BA%8F"><span class="nav-number">1.7.1.2.</span> <span class="nav-text">MAC地址发送顺序</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-2IP%E5%9C%B0%E5%9D%80"><span class="nav-number">1.7.2.</span> <span class="nav-text">3.7.2IP地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.7.2.1.</span> <span class="nav-text">IP地址的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98%EF%BC%9A"><span class="nav-number">1.7.2.2.</span> <span class="nav-text">习题：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-3ARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.7.3.</span> <span class="nav-text">3.7.3ARP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-3"><span class="nav-number">1.7.3.1.</span> <span class="nav-text">注意：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.7.4.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-8%E9%9B%86%E7%BA%BF%E5%99%A8%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.8.</span> <span class="nav-text">3.8集线器与交换机的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A9%E6%9C%9F%E7%9A%84%E6%80%BB%E7%BA%BF%E5%9E%8B%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-number">1.8.0.1.</span> <span class="nav-text">早期的总线型以太网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%8C%E7%BB%9E%E7%BA%BF%E5%92%8C%E9%9B%86%E7%BA%BF%E5%99%A8HUB%E7%9A%84%E6%98%9F%E5%9E%8B%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-number">1.8.0.2.</span> <span class="nav-text">使用双绞线和集线器HUB的星型以太网</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9B%86%E7%BA%BF%E5%99%A8HUB%E5%9C%A8%E7%89%A9%E7%90%86%E5%B1%82%E6%89%A9%E5%B1%95%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="nav-number">1.8.0.3.</span> <span class="nav-text">使用集线器HUB在物理层扩展以太网</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-9%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%87%AA%E5%AD%A6%E4%B9%A0%E5%92%8C%E8%BD%AC%E5%8F%91%E5%B8%A7%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.9.</span> <span class="nav-text">3.9以太网交换机自学习和转发帧的流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98%EF%BC%9A-1"><span class="nav-number">1.9.1.</span> <span class="nav-text">习题：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-10%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E7%94%9F%E6%88%90%E6%A0%91%E5%8D%8F%E8%AE%AESTP"><span class="nav-number">1.10.</span> <span class="nav-text">3.10以太网交换机的生成树协议STP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%EF%BC%9A"><span class="nav-number">1.10.1.</span> <span class="nav-text">如何提高以太网的可靠性：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-11%E8%99%9A%E6%8B%9F%E5%B1%80%E5%9F%9F%E7%BD%91VLAN"><span class="nav-number">1.11.</span> <span class="nav-text">3.11虚拟局域网VLAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.11.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="nav-number">1.11.2.</span> <span class="nav-text">实现机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%8A%9F%E8%83%BD%EF%BC%9A"><span class="nav-number">1.11.2.1.</span> <span class="nav-text">需要实现的功能：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Access%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.11.2.2.</span> <span class="nav-text">Access端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Trunk%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.11.2.3.</span> <span class="nav-text">Trunk端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B9%A0%E9%A2%98%EF%BC%9A-2"><span class="nav-number">1.11.2.4.</span> <span class="nav-text">习题：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%8E%E4%B8%BA%E7%A7%81%E6%9C%89%E7%9A%84Habrid%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.11.2.5.</span> <span class="nav-text">华为私有的Habrid端口</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -205,16 +390,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yuzitech.github.io.git/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -227,9 +413,9 @@
       <meta itemprop="name" content="YuBlog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -274,7 +460,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><h2 id="3-1数据链路层概述"><a href="#3-1数据链路层概述" class="headerlink" title="3.1数据链路层概述"></a>3.1数据链路层概述</h2><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071733311.png" alt="image-20211207165933281"></p>
+        <h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><h2 id="3-1数据链路层概述"><a href="#3-1数据链路层概述" class="headerlink" title="3.1数据链路层概述"></a>3.1数据链路层概述</h2><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071733311.png" alt="image-20211207165933281"></p>
 <p>通常情况下我们可以这样看网络体系结构</p>
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071742728.png" alt="image-20211207174249613"></p>
 <p><strong>链路（Link）</strong>就是从一个结点到相邻结点的一段物理线路，而中间没有任何其他的交换结点。</p>
@@ -662,7 +848,6 @@
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131023634.png" alt="image-20211213102332333"></p>
 <h4 id="华为私有的Habrid端口"><a href="#华为私有的Habrid端口" class="headerlink" title="华为私有的Habrid端口"></a>华为私有的Habrid端口</h4><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112131027201.png" alt="image-20211213102733765"></p>
 
-      
     </div>
 
     
@@ -670,103 +855,40 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="reward-container">
+  <div>您的观看就是对我最大的赞赏，此处只是功能实现：）。</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="HikoYu 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="HikoYu 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/27/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://yuzitech.github.io.git/2021/08/27/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/labi1.jpg">
-      <meta itemprop="name" content="HikoYu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="YuBlog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/27/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2021-08-27 15:17:36 / 修改时间：15:31:14" itemprop="dateCreated datePublished" datetime="2021-08-27T15:17:36+08:00">2021-08-27</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>376</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Hello-Hexo"><a href="#Hello-Hexo" class="headerlink" title="Hello Hexo"></a>Hello Hexo</h2><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
