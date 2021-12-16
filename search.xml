@@ -19,8 +19,8 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2021/12/16/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
+    <title>计网-数据链路层</title>
+    <url>/2021/12/16/%E8%AE%A1%E7%BD%91-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/</url>
     <content><![CDATA[<h1 id="第三章-数据链路层"><a href="#第三章-数据链路层" class="headerlink" title="第三章 数据链路层"></a>第三章 数据链路层</h1><h2 id="3-1数据链路层概述"><a href="#3-1数据链路层概述" class="headerlink" title="3.1数据链路层概述"></a>3.1数据链路层概述</h2><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071733311.png" alt="image-20211207165933281"></p>
 <p>通常情况下我们可以这样看网络体系结构</p>
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071742728.png" alt="image-20211207174249613"></p>
@@ -67,9 +67,10 @@
 </ul>
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071918935.png" alt="image-20211207191831589"></p>
 <ul>
-<li>  没有帧定界的数据链路层协议</li>
+<li><p>没有帧定界的数据链路层协议</p>
+<p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071921226.png" alt="image-20211207192106050"></p>
+</li>
 </ul>
-<p>  <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071921226.png" alt="image-20211207192106050"></p>
 <p>前同步码传输时钟信号，帧开始定界符传输帧开始信号，不许要帧结束定界符，因为以太网V2规定了帧间间隔时间为96比特时间。</p>
 <p>​    <img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112071924524.png" alt="image-20211207192443497"></p>
 <h4 id="3-2-2透明传输"><a href="#3-2-2透明传输" class="headerlink" title="3.2.2透明传输"></a>3.2.2透明传输</h4><p>透明传输是指数据链路层对上层的传输数据没有限制，就好像数据链路层不存在一样。</p>
@@ -365,7 +366,7 @@
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112122337.png" alt="image-20211211212251379"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112112123066.png" alt="image-20211211212329783"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112122250299.png" alt="image-20211211212344949"></p>
-<h2 id="3-9以太网交换机自学习和转发帧的流程"><a href="#3-9以太网交换机自学习和转发帧的流程" class="headerlink" title="3.9以太网交换机自学习和转发帧的流程"></a>3.9以太网交换机自学习和转发帧的流程</h2><p><img src="image-20211212220023920.png" alt="image-20211212220023920"></p>
+<h2 id="3-9以太网交换机自学习和转发帧的流程"><a href="#3-9以太网交换机自学习和转发帧的流程" class="headerlink" title="3.9以太网交换机自学习和转发帧的流程"></a>3.9以太网交换机自学习和转发帧的流程</h2><p><img src="https://cdn.jsdelivr.net/gh/YuziTech/Picgo/202112161629717.png" alt="image-20211212220023920"></p>
 <p>假设各主机知道网络中其他各主机的MAC地址（无需进行ARP）</p>
 <p><strong>交换机自学习</strong>：</p>
 <p>在传输的时候登记MAC地址和接口，记录A的MAC地址和接口是1</p>
